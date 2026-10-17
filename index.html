@@ -1,420 +1,61 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#fff3f6">
-<title>For My Somu ♡</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2b1724"><title>For My Somu ♡</title>
 <style>
-:root {
-  --pink: #d98aa9;
-  --deep: #824b64;
-  --cream: #fff9f1;
-  --paper: #fffdfb;
-  --muted: #987b88;
-  --line: #efdce4;
-}
-* { box-sizing: border-box; }
-[hidden] { display: none !important; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  color: var(--deep);
-  background:
-    radial-gradient(ellipse at top left, #ffe2ec, transparent 48%),
-    linear-gradient(145deg, #fff8f1, #fff0f6 55%, #fffaf3);
-  font-family: Georgia, "Times New Roman", serif;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-button, a { -webkit-tap-highlight-color: transparent; }
-button {
-  font: inherit;
-  cursor: pointer;
-}
-button:focus-visible, a:focus-visible {
-  outline: 3px solid #ad6384;
-  outline-offset: 4px;
-}
-#hearts {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-}
-.float-heart {
-  position: absolute;
-  bottom: -35px;
-  color: #d98aa966;
-  animation: floatUp linear forwards;
-}
-@keyframes floatUp {
-  to { transform: translateY(-110vh) rotate(35deg); opacity: 0; }
-}
-.screen {
-  position: relative;
-  z-index: 1;
-  width: min(100% - 28px, 760px);
-  margin: 0 auto;
-  padding: 38px 0 60px;
-  animation: fadeIn .65s ease both;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.center { text-align: center; }
-.eyebrow {
-  text-transform: uppercase;
-  letter-spacing: .18em;
-  font: 11px/1.8 Arial, sans-serif;
-  color: #ad6c87;
-}
-h1, h2, h3 { font-weight: normal; line-height: 1.2; }
-h1 { font-size: clamp(38px, 9vw, 66px); margin: 12px 0; }
-h2 { font-size: clamp(28px, 6vw, 42px); margin: 8px 0 14px; }
-h3 { font-size: 23px; margin: 10px 0; }
-p { line-height: 1.85; }
-.subtitle { color: var(--muted); font-style: italic; }
-button.primary, button.secondary, .music-link {
-  border: 0;
-  border-radius: 999px;
-  padding: 14px 23px;
-  text-decoration: none;
-  display: inline-block;
-  transition: transform .2s, box-shadow .2s;
-}
-button.primary {
-  color: white;
-  background: linear-gradient(120deg, #d98aa9, #ba7292);
-  box-shadow: 0 8px 22px #c77d9b35;
-}
-button.secondary, .music-link {
-  color: var(--deep);
-  background: #fffdfb;
-  border: 1px solid var(--line);
-}
-button.primary:hover, button.secondary:hover, .music-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 7px 18px #a65e7d20;
-}
-.daisy-placeholder {
-  width: min(62vw, 255px);
-  aspect-ratio: 3 / 4;
-  border: 9px solid white;
-  border-bottom-width: 32px;
-  border-radius: 5px;
-  margin: 0 auto 24px;
-  background: linear-gradient(145deg, #f8d9e3, #fff2d8);
-  box-shadow: 0 14px 36px #9b587d25;
-  display: grid;
-  place-items: center;
-  font-size: 50px;
-}
-.panel {
-  background: #fffdfbdc;
-  border: 1px solid #efdce4;
-  border-radius: 23px;
-  padding: clamp(19px, 5vw, 34px);
-  box-shadow: 0 10px 32px #a65e7d0c;
-  margin: 20px 0;
-}
-.menu-grid, .card-grid, .memory-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 13px;
-  margin: 24px 0;
-}
-.chapter-button {
-  text-align: left;
-  border: 1px solid var(--line);
-  border-radius: 17px;
-  padding: 18px 14px;
-  color: var(--deep);
-  background: #fffdfbdc;
-  min-height: 94px;
-  line-height: 1.5;
-}
-.chapter-button span { display: block; font-size: 12px; color: var(--muted); margin-bottom: 5px; }
-.card {
-  background: white;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 19px 15px;
-  text-align: center;
-  min-width: 0;
-}
-.heart-card { background: #fff0f5; border-radius: 48% 48% 44% 44% / 35% 35% 55% 55%; }
-.memory-photo {
-  background: linear-gradient(145deg, #f7dce6, #fff2de);
-  border: 7px solid white;
-  border-bottom-width: 24px;
-  box-shadow: 0 5px 17px #78415e12;
-  aspect-ratio: 4 / 5;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 10px;
-  color: #9b7184;
-  font: 13px/1.5 Arial, sans-serif;
-  margin-bottom: 14px;
-}
-.memory-photo span { font-size: 30px; display: block; margin-bottom: 8px; }
-.memory-card { padding: 12px; background: #fffdfb; border-radius: 12px; }
-.memory-card p { font-size: 14px; }
-.envelope {
-  width: 100%;
-  text-align: left;
-  border: 1px solid var(--line);
-  border-radius: 15px;
-  padding: 17px;
-  background: #fffdfb;
-  color: var(--deep);
-  margin: 8px 0;
-}
-.envelope-note { padding: 18px; background: #fff0f5; border-radius: 12px; margin: 10px 0 16px; animation: fadeIn .5s ease both; }
-.note-text { white-space: pre-line; line-height: 1.9; }
-.nav-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  margin-top: 30px;
-}
-.nav-row button { flex: 1; }
-.small { font: 12px/1.7 Arial, sans-serif; color: var(--muted); }
-.final-photo {
-  width: min(75vw, 300px);
-  aspect-ratio: 3 / 4;
-  margin: 22px auto;
-  border: 10px solid white;
-  background: linear-gradient(145deg, #f8dce6, #fff0d9);
-  box-shadow: 0 12px 30px #a65e7d20;
-  display: grid;
-  place-items: center;
-  color: #9b7184;
-  text-align: center;
-  padding: 20px;
-}
-.final-message { animation: fadeIn .8s ease both; }
-footer { text-align: center; font-size: 12px; color: var(--muted); margin-top: 35px; }
-@media (max-width: 430px) {
-  .menu-grid, .card-grid, .memory-grid { gap: 9px; }
-  .chapter-button { padding: 14px 10px; font-size: 14px; }
-  .memory-card { padding: 9px; }
-  .nav-row button { padding: 12px 10px; font-size: 14px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: .01ms !important;
-  }
-}
-</style>
-</head>
-<body>
-<div id="hearts" aria-hidden="true"></div>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
+:root{--ink:#351c2b;--wine:#6e2949;--rose:#e7a5b8;--blush:#f8e8e8;--cream:#fff9f1;--gold:#d5b477;--muted:#8f6f7d;--shadow:0 24px 70px #2a122522}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;overflow-x:hidden}button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid var(--gold);outline-offset:4px}.screen{display:none;min-height:100svh;padding:clamp(22px,5vw,64px) 18px;position:relative;overflow:hidden}.screen.active{display:flex;align-items:center;justify-content:center;animation:arrive .65s ease both}.wrap{width:min(100%,920px);margin:auto;position:relative;z-index:1}.eyebrow{font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:700}.script{font-family:'Caveat',cursive}.serif{font-family:'Playfair Display',serif}.tiny-heart{color:#b95d7d}.btn{border:0;border-radius:999px;padding:14px 22px;background:var(--wine);color:white;box-shadow:0 9px 24px #6e294933;transition:transform .2s,box-shadow .2s}.btn:hover{transform:translateY(-2px);box-shadow:0 13px 30px #6e294944}.btn.secondary{background:#fff8f2;color:var(--wine);border:1px solid #e6c9d1;box-shadow:none}.btn-row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:28px}.center{text-align:center}.ornament{font-size:1.5rem;letter-spacing:.5rem;color:#b86a86}.hero{background:radial-gradient(ellipse at 50% 38%,#713653 0%,#3b2031 42%,#1c1420 100%);color:#fff7f1;text-align:center}.hero:before,.hero:after{content:'';position:absolute;width:38vw;height:38vw;border-radius:50%;filter:blur(2px);border:1px solid #e5b9c333;pointer-events:none}.hero:before{top:-18vw;left:-12vw;box-shadow:0 0 90px #d88eaa18}.hero:after{right:-15vw;bottom:-22vw;box-shadow:0 0 110px #d88eaa20}.hero .eyebrow{color:#e9c6d4}.hero h1{font:600 clamp(3.2rem,11vw,7.4rem)/.98 'Playfair Display',serif;letter-spacing:-.055em;margin:20px 0 16px}.hero h1 em{color:#f2bdce;font-weight:500}.hero h2{font:500 clamp(1.25rem,4vw,2rem) 'Caveat',cursive;color:#f3d9e1;margin:0 0 12px}.hero p{color:#e4d0d8;line-height:1.8;max-width:440px;margin:0 auto}.hero .btn{background:#f3dce4;color:#49243a;margin-top:28px}.hero-flower{font-size:3rem;display:inline-block;filter:drop-shadow(0 0 18px #f1bfd277);animation:sway 4s ease-in-out infinite}.stars{position:absolute;inset:0;pointer-events:none;opacity:.7;background-image:radial-gradient(#fff 1px,transparent 1.5px),radial-gradient(#eeb9cc 1px,transparent 1.5px);background-size:83px 83px,127px 127px;background-position:13px 20px,60px 80px;mask-image:linear-gradient(to bottom,black,transparent 90%)}.intro-card,.paper{background:#fffaf4;border:1px solid #f0dce0;border-radius:26px;padding:clamp(24px,5vw,54px);box-shadow:var(--shadow);position:relative}.intro-card:after,.paper:after{content:'♡';position:absolute;right:22px;top:8px;font:2rem 'Caveat';color:#d79aaf;transform:rotate(12deg)}h2.section-title{font:600 clamp(2.2rem,6vw,4rem)/1.05 'Playfair Display',serif;letter-spacing:-.035em;margin:10px 0 12px}h3{font-family:'Playfair Display',serif;font-weight:600}.intro-card p{font-size:1.02rem;line-height:1.85;color:#79596a}.menu-screen{background:linear-gradient(135deg,#fff9f1,#f7e4e9)}.menu-head{text-align:center;margin-bottom:30px}.menu-head .script{font-size:1.6rem;color:var(--wine)}.chapter-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.chapter{display:flex;align-items:center;gap:12px;text-align:left;border:1px solid #efd7df;border-radius:17px;padding:18px 16px;background:#fffaf6;color:var(--ink);box-shadow:0 8px 20px #6e29490a;transition:transform .2s,border-color .2s}.chapter:hover{transform:translateY(-3px);border-color:#d79aaf}.chapter .emoji{font-size:1.5rem}.chapter .ch-title{font-weight:700}.chapter small{display:block;color:var(--muted);font-size:.75rem;margin-top:4px}.content-screen{background:radial-gradient(ellipse at 10% 5%,#f7e4e9,transparent 42%),linear-gradient(135deg,#fff9f1,#fff4f3)}.content-screen .wrap{max-width:980px}.topline{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:26px}.back{border:1px solid #e9cbd5;border-radius:999px;background:#fffaf5;color:var(--wine);padding:10px 15px}.content-title{text-align:center;margin-bottom:26px}.content-title .script{font-size:1.5rem;color:var(--wine)}.content-title p{color:var(--muted);line-height:1.7}.letter{font:500 clamp(1.03rem,2.6vw,1.22rem)/1.95 'Caveat',cursive;white-space:pre-line}.letter p{margin:0 0 19px}.signature{font-size:1.5rem;color:var(--wine);margin-top:26px}.memory-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:start}.polaroid{background:#fff;padding:10px 10px 17px;box-shadow:0 14px 35px #44213320;transform:rotate(var(--tilt,-2deg));transition:transform .25s;position:relative}.polaroid:nth-child(even){--tilt:2deg;margin-top:18px}.polaroid:hover{transform:rotate(0deg) translateY(-5px)}.polaroid img{width:100%;height:230px;object-fit:cover;display:block;background:#f3dce4}.polaroid figcaption{font:600 1.3rem/1.1 'Caveat',cursive;text-align:center;padding:12px 2px 0;color:#5d3549}.polaroid .tape{position:absolute;top:-8px;left:38%;width:62px;height:19px;background:#efd6b2b8;transform:rotate(-5deg)}.polaroid.wide img{object-position:center}.note{border-radius:20px;padding:22px;background:#fffaf5;border:1px solid #f0dce0;box-shadow:0 10px 28px #5c2d4110;line-height:1.8}.note h3{font-size:1.3rem;margin:0 0 8px}.note p{margin:0;color:#765466}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.reason-card{background:#fffaf5;border:1px solid #f0dce0;border-radius:20px;padding:22px;box-shadow:0 9px 25px #5c2d4110}.reason-card h3{margin:0 0 8px;font-size:1.25rem}.reason-card p{line-height:1.7;color:#765466;margin:0}.mini-photo{width:100%;height:180px;object-fit:cover;border-radius:13px;margin-bottom:14px}.envelope-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.envelope{min-height:160px;background:linear-gradient(145deg,#fffaf5,#f4dce4);border:1px solid #e8c6d2;border-radius:17px;padding:18px;color:var(--wine);text-align:center;box-shadow:0 10px 25px #5c2d4110;transition:transform .2s}.envelope:hover{transform:translateY(-3px)}.envelope .env-icon{font-size:2.2rem}.envelope strong{display:block;font-family:'Playfair Display',serif;margin-top:10px}.envelope small{display:block;margin-top:7px;color:#946d7f}.reveal-note{display:none;margin-top:14px;text-align:left;background:#fffaf4;padding:20px;border-radius:16px;line-height:1.85;white-space:pre-line;color:#674357}.reveal-note.show{display:block;animation:arrive .35s ease}.promise-list{display:grid;gap:13px}.promise{display:flex;gap:14px;padding:19px;background:#fffaf5;border-radius:16px;border:1px solid #f0dce0;line-height:1.7}.promise .heart{font-size:1.5rem}.promise strong{font-family:'Playfair Display',serif}.song-card{max-width:550px;margin:auto;text-align:center;padding:clamp(28px,6vw,50px);border-radius:26px;background:linear-gradient(145deg,#3a1e31,#7c3d5b);color:#fff5f7;box-shadow:var(--shadow);position:relative;overflow:hidden}.record{width:150px;height:150px;border-radius:50%;margin:0 auto 24px;background:repeating-radial-gradient(circle,#241723 0 4px,#453044 5px 7px);display:grid;place-items:center;animation:spin 14s linear infinite}.record span{width:48px;height:48px;border-radius:50%;background:#d88da8;display:grid;place-items:center;color:#53243c}.song-card h3{font-size:1.7rem;margin:0 0 6px}.song-card p{color:#e9cad6;line-height:1.7}.song-links{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:22px}.song-links a{color:#4a233a;background:#f7dfe7;border-radius:999px;padding:12px 17px;text-decoration:none;font-weight:700}.finale{background:radial-gradient(ellipse at 50% 30%,#7b3b59,#301b2d 65%,#19131c);color:#fff5f6;text-align:center}.finale .eyebrow{color:#edc3d3}.finale h2{font:600 clamp(2.8rem,9vw,6rem)/1 'Playfair Display',serif;margin:20px 0}.finale p{line-height:1.9;color:#ead5dc;max-width:600px;margin:0 auto}.final-photo{display:none;width:min(100%,330px);margin:28px auto 0;background:white;padding:11px 11px 22px;box-shadow:0 20px 55px #0005;transform:rotate(-2deg)}.final-photo.show{display:block;animation:arrive .7s ease}.final-photo img{width:100%;max-height:420px;object-fit:cover}.final-photo figcaption{font:1.5rem 'Caveat';color:#63364d;padding-top:12px}.faith{font:600 clamp(1.3rem,4vw,2rem)/1.5 'Caveat',cursive!important;color:#f5d9e4!important;margin-top:24px!important}.footer{text-align:center;color:#b38a9b;font:1.1rem 'Caveat';margin-top:30px}.float-heart{position:fixed;bottom:-30px;z-index:10;pointer-events:none;animation:floatup 5s linear forwards;color:#d47d9b;text-shadow:0 3px 10px #e8a4bd66}@keyframes arrive{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}@keyframes floatup{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}@keyframes sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:700px){.memory-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.polaroid img{height:210px}.envelope-grid{grid-template-columns:1fr}.envelope{min-height:unset;display:flex;align-items:center;text-align:left;gap:14px}.envelope .env-icon{font-size:1.8rem}.envelope strong{margin-top:0}.envelope small{display:none}.cards{grid-template-columns:1fr}.chapter-grid{grid-template-columns:1fr}.chapter{padding:15px}.topline{margin-bottom:20px}.polaroid:nth-child(even){margin-top:8px}}
+@media(max-width:390px){.memory-grid{gap:10px}.polaroid{padding:7px 7px 13px}.polaroid img{height:175px}.polaroid figcaption{font-size:1.15rem}.intro-card,.paper{padding:23px}.btn{padding:13px 18px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+</style></head><body>
+<section id="welcome" class="screen hero active"><div class="stars"></div><div class="wrap"><div class="hero-flower">🌼</div><div class="eyebrow">♡ a little surprise for you ♡</div><h1>Hey, <em>Somu…</em></h1><h2>Can I tell you something?</h2><p>A little corner of the world, made just for you.</p><button class="btn" onclick="go('intro')">Come here, my love 💌</button><div class="ornament" style="margin-top:35px;color:#d9a4b7">✧ ♡ ✧</div></div></section>
+<section id="intro" class="screen"><div class="wrap"><div class="intro-card center"><div class="eyebrow">just for you ♡</div><h2 class="section-title">A little something from me</h2><p>I hope this makes you smile just something i really wanted to do for you 🥺</p><button class="btn" onclick="go('menu')">Come see, my love 💗</button></div></div></section>
+<section id="menu" class="screen menu-screen"><div class="wrap"><div class="menu-head"><div class="script">made with all my love</div><h2 class="section-title">For my Somu ♡</h2><p style="color:var(--muted)">Pick a little piece of us.</p></div><div class="chapter-grid">
+<button class="chapter" onclick="go('letter')"><span class="emoji">💌</span><span><span class="ch-title">A Letter for You</span><small>Things I wanted you to know</small></span></button>
+<button class="chapter" onclick="go('memories')"><span class="emoji">📸</span><span><span class="ch-title">Our Lil Memories</span><small>Little moments, forever kept</small></span></button>
+<button class="chapter" onclick="go('home')"><span class="emoji">❤️</span><span><span class="ch-title">Why You're My Home</span><small>Little things I love about you</small></span></button>
+<button class="chapter" onclick="go('openwhen')"><span class="emoji">✉️</span><span><span class="ch-title">Open When…</span><small>For the days you need me</small></span></button>
+<button class="chapter" onclick="go('promises')"><span class="emoji">🤍</span><span><span class="ch-title">Promises from My Heart</span><small>Not perfect, but always trying</small></span></button>
+<button class="chapter" onclick="go('song')"><span class="emoji">🎧</span><span><span class="ch-title">Our Song</span><small>A song for two hearts</small></span></button>
+<button class="chapter" onclick="go('finale')"><span class="emoji">🎁</span><span><span class="ch-title">One Last Thing</span><small>A little surprise, just for you</small></span></button></div><div class="footer">for my Somu, always ♡</div></div></section>
+<section id="letter" class="screen content-screen"><div class="wrap"><div class="topline"><button class="back" onclick="go('menu')">← Chapters</button><span class="eyebrow">chapter one · 💌</span></div><div class="content-title"><div class="script">a letter from Sammy</div><h2 class="section-title">My Somu, my babygirl ❤️</h2><p>Some things deserve more than a text.</p></div><article class="paper letter"><p>My Somu, my babygirl ❤️💌</p><p>I honestly don't even know where to begin because there's so much I wanna say to you but sometimes...</p><p>If God earlier would have told me, me meeting you would be the moment I'm gonna find my love of my life, I would have just blushed so much. You're my only person, my comfort, ...</p><p>All the times I think about our lil moments together, Shopprix rounds, Ramprastha walks, hehe, holding my arm, they might seem like our ordinary past but nah, they're preserved like an ancient treasure that I'm gonna tell our kids in stories 🥺 I wish I could revisit then when I miss you...</p><p>Now that I'm here so far away... but even with so much kilometres you're in my bag and back of my phone 🥺</p><p>And baby, I also wanna say I'm sorry for the times I've hurt you, misunderstood you, or made things harder when I should've tried to understand you better. I know I've made mistakes, and I don't wanna act like I haven't. I'm accepting my part in them, and I genuinely wanna learn from them, not just say sorry and repeat the same things. You deserve to feel heard, understood and loved by me, and I'll keep trying to become better at showing you that. 🥺❤️</p><p>I know I'm not perfect, never will be, but there are things I'm still learning... I want to listen and be there for you more deeply and show you....</p><p>I love all the little things about you, your magical smile, magnetic charm in your eyes and the strength you might not even realise how strong you are.</p><p>More than anything I'll always will make more memories with you my baby, finding our way through difficult days together we will wait for each other patiently..</p><p>And if there's one thing... you are loved not just through these words on screen but by all the actions you deserve. You are my Somu, my babygirl, my whole world, you're the definition of my life.</p><p>I love you baby. Till eternity, through thick and thin.</p><p class="signature">Always yours,<br>Sammy ❤️</p></article><div class="btn-row"><button class="btn" onclick="next('letter')">Next chapter ♡</button><button class="btn secondary" onclick="go('menu')">Back to chapters</button></div></div></section>
+<section id="memories" class="screen content-screen"><div class="wrap"><div class="topline"><button class="back" onclick="go('menu')">← Chapters</button><span class="eyebrow">chapter two · 📸</span></div><div class="content-title"><div class="script">our tiny time capsule</div><h2 class="section-title">Our Lil Memories</h2><p>Little moments that became treasures.</p></div><div class="memory-grid">
+<figure class="polaroid"><span class="tape"></span><img src="somu-1.webp" alt="Sammy and Somu sitting close together" loading="lazy"><figcaption>My favourite place is beside you ♡</figcaption></figure>
+<figure class="polaroid"><span class="tape"></span><img src="somu-2.webp" alt="Our photo booth strip" loading="lazy"><figcaption>Our photo-booth chaos 🥹</figcaption></figure>
+<figure class="polaroid"><span class="tape"></span><img src="somu-5.webp" alt="Somu's playful close-up" loading="lazy"><figcaption>Your silly little face 😭</figcaption></figure>
+<figure class="polaroid"><span class="tape"></span><img src="somu-4.webp" alt="Somu smiling in the light" loading="lazy"><figcaption>Magical eyes, always ✨</figcaption></figure>
+<figure class="polaroid"><span class="tape"></span><img src="somu-3.webp" alt="Sammy and Somu leaning together" loading="lazy"><figcaption>My comfort person ❤️</figcaption></figure>
+<figure class="polaroid"><span class="tape"></span><img src="somu-6.webp" alt="Somu in her red floral outfit" loading="lazy"><figcaption>My Somu 🌼</figcaption></figure></div>
+<div class="cards" style="margin-top:30px"><article class="note"><h3>🛍️ Our Shopprixx rounds</h3><p>Our little rounds together.</p></article><article class="note"><h3>💗 Our Ramprastha walks</h3><p>Those walks, you holding my arm, and moments I'll keep close forever.</p></article><article class="note"><h3>📚 Sector 4 bookshop</h3><p>Looking for your desired books.</p></article><article class="note"><h3>🪔 Diwali calls</h3><p>Having long phone calls during Diwali.</p></article><article class="note"><h3>🥹 Golden bracelet</h3><p>Awwwww golden bracelet 🥹 it fits you perfectly see I'm holding and hanging to your wrist tight</p></article></div><div class="btn-row"><button class="btn" onclick="next('memories')">Next chapter ♡</button><button class="btn secondary" onclick="go('menu')">Back to chapters</button></div></div></section>
+<section id="home" class="screen content-screen"><div class="wrap"><div class="topline"><button class="back" onclick="go('menu')">← Chapters</button><span class="eyebrow">chapter three · ❤️</span></div><div class="content-title"><div class="script">the little things</div><h2 class="section-title">Why You're My Home ❤️</h2><p>Little things I love about you.</p></div><div class="cards">
+<article class="reason-card"><img class="mini-photo" src="somu-4.webp" alt="Somu's eyes in the light" loading="lazy"><h3>Your magnetic eyes 👀</h3><p>There's something about them I can never stop looking at.</p></article>
+<article class="reason-card"><img class="mini-photo" src="somu-6.webp" alt="Somu smiling" loading="lazy"><h3>Your smile 🌼</h3><p>That magical smile of yours makes everything feel a little better.</p></article>
+<article class="reason-card"><h3>Your funny side 🩷</h3><p>I love your sense of humor.</p></article><article class="reason-card"><h3>Your presence of mind ✨</h3><p>You're my smart baby.</p></article><article class="reason-card"><h3>Your strength 🦁</h3><p>You're strong as a lioness, Smart as a Deer dealing with your and sometimes mine emotions aswell together.</p></article></div><p class="center serif" style="font-size:clamp(1.3rem,4vw,2rem);margin:30px 0 0">Somehow, in a world full of places, you became my home. ♡</p><div class="btn-row"><button class="btn" onclick="next('home')">Next chapter ♡</button><button class="btn secondary" onclick="go('menu')">Back to chapters</button></div></div></section>
+<section id="openwhen" class="screen content-screen"><div class="wrap"><div class="topline"><button class="back" onclick="go('menu')">← Chapters</button><span class="eyebrow">chapter four · ✉️</span></div><div class="content-title"><div class="script">little notes for your heart</div><h2 class="section-title">Open When… ✉️</h2><p>Pick the note you need, my love.</p></div><div class="envelope-grid">
+<button class="envelope" onclick="toggleNote(0)"><span class="env-icon">💌</span><span><strong>Open when you miss me</strong><small>A little hug from far away</small></span></button>
+<button class="envelope" onclick="toggleNote(1)"><span class="env-icon">🫂</span><span><strong>Open when you're sad</strong><small>You don't have to be okay all the time</small></span></button>
+<button class="envelope" onclick="toggleNote(2)"><span class="env-icon">🤍</span><span><strong>Open when you feel lonely</strong><small>I'm just a text or call away</small></span></button></div>
+<div id="note0" class="reveal-note">Awwwww golden bracelet 🥹it fits you perfectly see I'm holding and hanging to your wrist tight</div>
+<div id="note1" class="reveal-note">My babyyy myyy gulllluu oh meri jaaaaan 🥺❤️
 
-<main>
-  <section id="welcome" class="screen center">
-    <div class="eyebrow">♡ A little surprise for you ♡</div>
-    <div class="daisy-placeholder" aria-label="Photo placeholder">🌼<br>♡</div>
-    <h1>Hey, Somu…</h1>
-    <h2>Can I tell you something?</h2>
-    <p class="subtitle">A little corner of the world, made just for you.</p>
-    <button class="primary" onclick="showIntro()">Come here, my love 💌</button>
-  </section>
+Come here na meri jaan, idhar aaoo. I wish I could just pull you into the biggest hug right now and hold you until that little head of yours feels a bit lighter. You don't have to pretend to be okay with me, okay? If something's bothering you, tell me. If you wanna cry, cry baby, if you wanna rant, rant as much as you want. I'll listen to you.
 
-  <section id="intro" class="screen center" hidden>
-    <div class="panel">
-      <div class="eyebrow">Just for you ♡</div>
-      <h2>A little something from me</h2>
-      <p>I hope this makes you smile just something i really wanted to do for you 🥺</p>
-      <button class="primary" onclick="showMenu()">Come see, my love 💗</button>
-    </div>
-  </section>
+You don't have to figure everything out all at once, meri jaan. One thing at a time, okay? And please don't ever think that your bad days make you any less precious to me. You're still my babyyy, on the days you're smiling and on the days when everything feels too much. 🥺
 
-  <section id="menu" class="screen center" hidden>
-    <div class="eyebrow">A little journey through us</div>
-    <h2>For My Somu 💗</h2>
-    <p class="subtitle">Take your time, my love. One little chapter at a time.</p>
-    <div class="menu-grid">
-      <button class="chapter-button" onclick="openChapter(1)"><span>CHAPTER 01</span>💌 A Letter for You</button>
-      <button class="chapter-button" onclick="openChapter(2)"><span>CHAPTER 02</span>📸 Our Lil Memories</button>
-      <button class="chapter-button" onclick="openChapter(3)"><span>CHAPTER 03</span>❤️ Why You're My Home</button>
-      <button class="chapter-button" onclick="openChapter(4)"><span>CHAPTER 04</span>✉️ Open When…</button>
-      <button class="chapter-button" onclick="openChapter(5)"><span>CHAPTER 05</span>🤍 Promises from My Heart</button>
-      <button class="chapter-button" onclick="openChapter(6)"><span>CHAPTER 06</span>🎧 Our Song</button>
-      <button class="chapter-button" onclick="openChapter(7)"><span>CHAPTER 07</span>🎁 One Last Thing</button>
-    </div>
-    <p class="small">Made with love, one little memory at a time ♡</p>
-  </section>
+I might not always know the perfect thing to say, but I'll always try to understand you and be there for you. I love you so so much, my gulllluu. I wish I could kiss your forehead rn and remind you how special you are to me. ❤️🫂</div>
+<div id="note2" class="reveal-note">Somuuu meri jaaan 🥺❤️
 
-  <section id="chapter" class="screen" hidden>
-    <div class="eyebrow center" id="chapter-number">CHAPTER 01</div>
-    <h2 class="center" id="chapter-title"></h2>
-    <div id="chapter-content"></div>
-    <div class="nav-row">
-      <button class="secondary" onclick="showMenu()">← Chapters</button>
-      <button id="next-button" class="primary" onclick="nextChapter()">Next chapter →</button>
-    </div>
-  </section>
-</main>
-
+I know I'm not there physically with you right now, but I'm always here by every possible means available to us. Text me, call me, spam me, vent to me 🥺 whatever you're feeling, you're the most important thing for me above everything ❤️</div><div class="btn-row"><button class="btn" onclick="next('openwhen')">Next chapter ♡</button><button class="btn secondary" onclick="go('menu')">Back to chapters</button></div></div></section>
+<section id="promises" class="screen content-screen"><div class="wrap"><div class="topline"><button class="back" onclick="go('menu')">← Chapters</button><span class="eyebrow">chapter five · 🤍</span></div><div class="content-title"><div class="script">from my heart to yours</div><h2 class="section-title">Promises from My Heart 🤍</h2><p>Not promises of perfection, but promises of effort.</p></div><div class="promise-list"><div class="promise"><span class="heart">♡</span><div><strong>I promise to listen.</strong><br>I promise to listen. I'll always do my best hearing you completely…</div></div><div class="promise"><span class="heart">♡</span><div><strong>I promise to ask, not assume.</strong><br>I'll try to understand your side before jumping to conclusions or defending myself.</div></div><div class="promise"><span class="heart">♡</span><div><strong>I promise to understand what you need.</strong><br>I'll try to understand whether you need me to listen and comfort you or help you work through a practical problem.</div></div><div class="promise"><span class="heart">♡</span><div><strong>I promise to keep trying.</strong><br>I'll try to follow through, own my mistakes, and keep working on the things that matter to us.</div></div></div><p class="center serif" style="font-size:1.3rem;line-height:1.7;margin-top:25px">I can't promise to get everything right, my love. But I can promise to keep learning how to love you better. ♡</p><div class="btn-row"><button class="btn" onclick="next('promises')">Next chapter ♡</button><button class="btn secondary" onclick="go('menu')">Back to chapters</button></div></div></section>
+<section id="song" class="screen content-screen"><div class="wrap"><div class="topline"><button class="back" onclick="go('menu')">← Chapters</button><span class="eyebrow">chapter six · 🎧</span></div><div class="content-title"><div class="script">press play, think of us</div><h2 class="section-title">Our Song 🎧</h2></div><div class="song-card"><div class="record"><span>♡</span></div><div class="eyebrow" style="color:#eac2d2">a song for us</div><h3>I Thought I Saw Your Face Today</h3><p>She &amp; Him</p><p>A little song for two hearts, even when they're miles apart.</p><div class="song-links"><a href="https://www.youtube.com/results?search_query=She+%26+Him+I+Thought+I+Saw+Your+Face+Today" target="_blank" rel="noopener">Listen on YouTube ↗</a><a href="https://open.spotify.com/search/I%20Thought%20I%20Saw%20Your%20Face%20Today%20She%20%26%20Him" target="_blank" rel="noopener">Find on Spotify ↗</a></div></div><div class="btn-row"><button class="btn" onclick="next('song')">Next chapter ♡</button><button class="btn secondary" onclick="go('menu')">Back to chapters</button></div></div></section>
+<section id="finale" class="screen finale"><div class="stars"></div><div class="wrap"><div class="eyebrow">chapter seven · one last thing</div><div class="ornament" style="margin-top:25px;color:#eab8ca">✧ ♡ ✧</div><h2>One Last Thing… 🎁</h2><p>A little surprise, just for you.</p><button class="btn" style="background:#f3dce4;color:#49243a;margin-top:25px" onclick="revealFinal()">One last thing… 💗</button><figure id="finalPhoto" class="final-photo"><img src="somu-1.webp" alt="A favourite memory of us"><figcaption>My Somu, my babygirl ❤️</figcaption></figure><p id="faith" class="faith" hidden>We are blessed in the spirit of Our Loving God forever,What he brought together let no one separate 💗</p><div class="btn-row"><button class="btn secondary" onclick="go('menu')">Back to chapters</button><button class="btn" onclick="go('welcome')">From the beginning ↺</button></div><div class="footer" style="color:#d3a7b8">Always yours, Sammy ♡</div></div></section>
 <script>
-const ids = ["welcome", "intro", "menu", "chapter"];
-function showScreen(id) {
-  ids.forEach(name => document.getElementById(name).hidden = name !== id);
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-function showIntro() { showScreen("intro"); }
-function showMenu() { showScreen("menu"); }
-let currentChapter = 1;
-
-const chapters = {
-1: {
-  title: "A Letter for You 💌",
-  html: `<div class="panel center">
-    <div class="eyebrow">A letter from Sammy</div>
-    <div class="memory-photo"><div><span>💌</span>Your personal letter will go here when you approve it.</div></div>
-    <p class="subtitle">Letter placeholder — your approved letter will be added later.</p>
-  </div>`
-},
-2: {
-  title: "Our Lil Memories 📸",
-  html: `<p class="center subtitle">Little moments that became treasures.</p>
-  <div class="memory-grid">
-    <article class="memory-card">
-      <div class="memory-photo"><div><span>📸</span>Photo placeholder</div></div>
-      <h3>Our Shopprixx rounds 🛍️</h3>
-      <p>Our little rounds together.</p>
-    </article>
-    <article class="memory-card">
-      <div class="memory-photo"><div><span>📸</span>Photo-booth placeholder</div></div>
-      <h3>Our Ramprastha walks 💗</h3>
-      <p>Those walks, you holding my arm, and moments I'll keep close forever.</p>
-    </article>
-    <article class="memory-card">
-      <div class="memory-photo"><div><span>📚</span>Photo placeholder</div></div>
-      <h3>Sector 4 bookshop</h3>
-      <p>Looking for your desired books.</p>
-    </article>
-    <article class="memory-card">
-      <div class="memory-photo"><div><span>☎️</span>Photo placeholder</div></div>
-      <h3>Our Diwali calls 🥹</h3>
-      <p>Having long phone calls during Diwali.</p>
-    </article>
-    <article class="memory-card">
-      <div class="memory-photo"><div><span>💛</span>Photo placeholder</div></div>
-      <h3>The golden bracelet</h3>
-      <p>Awwwww golden bracelet 🥹 it fits you perfectly see I'm holding and hanging to your wrist tight</p>
-    </article>
-  </div>`
-},
-3: {
-  title: "Why You're My Home ❤️",
-  html: `<p class="center subtitle">Little things I love about you.</p>
-  <div class="card-grid">
-    <article class="card heart-card"><div class="memory-photo"><div><span>♡</span>Photo placeholder</div></div><h3>Your magnetic eyes 👀</h3></article>
-    <article class="card heart-card"><div class="memory-photo"><div><span>♡</span>Photo placeholder</div></div><h3>Your smile 🌼</h3></article>
-    <article class="card heart-card"><h3>Your funny side 🩷</h3><p>I love your sense of humor</p></article>
-    <article class="card heart-card"><h3>Your presence of mind ✨</h3><p>You're my smart baby</p></article>
-    <article class="card heart-card"><h3>Your strength 🦁</h3><p>You're strong as a lioness, Smart as a Deer dealing with your and sometimes mine emotions aswell together</p></article>
-  </div>
-  <p class="center subtitle">Somehow, in a world full of places, you became my home. ♡</p>`
-},
-4: {
-  title: "Open When… ✉️",
-  html: `<p class="center subtitle">Choose the envelope you need today, my love.</p>
-  <button class="envelope" onclick="toggleNote('miss')">💌 Open when you miss me <span aria-hidden="true">＋</span></button>
-  <div id="note-miss" class="envelope-note" hidden><p class="note-text">Awwwww golden bracelet 🥹it fits you perfectly see I'm holding and hanging to your wrist tight</p></div>
-  <button class="envelope" onclick="toggleNote('sad')">🫂 Open when you're sad <span aria-hidden="true">＋</span></button>
-  <div id="note-sad" class="envelope-note" hidden><p class="note-text">Baby remember that diary sketch of mine God holding your hand? His arms are around your soul right now He's closer to you in times of grief 🥺</p></div>
-  <button class="envelope" onclick="toggleNote('lonely')">🤍 Open when you feel lonely <span aria-hidden="true">＋</span></button>
-  <div id="note-lonely" class="envelope-note" hidden><p class="note-text">Hey soma look at me I'm just a text away okay? 🥺 You can never be lonely all you need is just flood my dms I'm always here for you</p></div>`
-},
-5: {
-  title: "Promises from My Heart 🤍",
-  html: `<div class="panel">
-    <p class="subtitle center">Not promises of perfection, but promises of effort.</p>
-    <h3>♡ I promise to listen.</h3>
-    <p>I promise to listen. I'll always do my best hearing you completely…</p>
-    <h3>♡ I promise to ask, not assume.</h3>
-    <p>I'll try to understand your side before jumping to conclusions or defending myself.</p>
-    <h3>♡ I promise to understand what you need.</h3>
-    <p>I'll try to understand whether you need me to listen and comfort you or help you work through a practical problem.</p>
-    <h3>♡ I promise to keep trying.</h3>
-    <p>I'll try to follow through, own my mistakes, and keep working on the things that matter to us.</p>
-    <p class="center subtitle">I can't promise to get everything right, my love. But I can promise to keep learning how to love you better. ♡</p>
-  </div>`
-},
-6: {
-  title: "Our Song 🎧",
-  html: `<div class="panel center">
-    <div class="memory-photo"><div><span>🎶</span>Song artwork placeholder</div></div>
-    <h3>I Thought I Saw Your Face Today</h3>
-    <p class="subtitle">She &amp; Him</p>
-    <p>A little song for two hearts, even when they're miles apart.</p>
-    <p><a class="music-link" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=She+%26+Him+I+Thought+I+Saw+Your+Face+Today">▶ Find on YouTube</a></p>
-    <p><a class="music-link" target="_blank" rel="noopener noreferrer" href="https://open.spotify.com/search/I%20Thought%20I%20Saw%20Your%20Face%20Today%20She%20%26%20Him">♫ Find on Spotify</a></p>
-  </div>`
-},
-7: {
-  title: "One Last Thing… 🎁",
-  html: `<div class="panel center">
-    <p class="subtitle">A little surprise, just for you.</p>
-    <button id="reveal-button" class="primary" onclick="revealFinal()">One last thing… 💗</button>
-    <div id="final-reveal" hidden>
-      <div class="final-photo"><div>📸<br><br>Your final photo will go here after you approve it.</div></div>
-      <div id="faith-message" class="final-message">
-        <p class="note-text">We are blessed in the spirit of Our Loving God forever,What he brought together let no one separate 💗</p>
-      </div>
-    </div>
-  </div>`
-}
-};
-
-function openChapter(number) {
-  currentChapter = number;
-  const data = chapters[number];
-  document.getElementById("chapter-number").textContent =
-    "CHAPTER " + String(number).padStart(2, "0");
-  document.getElementById("chapter-title").textContent = data.title;
-  document.getElementById("chapter-content").innerHTML = data.html;
-  document.getElementById("next-button").textContent =
-    number === 7 ? "Back to chapters ♡" : "Next chapter →";
-  document.getElementById("next-button").onclick =
-    number === 7 ? showMenu : nextChapter;
-  showScreen("chapter");
-}
-function nextChapter() {
-  if (currentChapter < 7) openChapter(currentChapter + 1);
-  else showMenu();
-}
-function toggleNote(name) {
-  const note = document.getElementById("note-" + name);
-  note.hidden = !note.hidden;
-}
-function revealFinal() {
-  document.getElementById("final-reveal").hidden = false;
-  document.getElementById("reveal-button").hidden = true;
-}
-function createHeart() {
-  const heart = document.createElement("span");
-  heart.className = "float-heart";
-  heart.textContent = ["♡", "♥", "✧"][Math.floor(Math.random() * 3)];
-  heart.style.left = Math.random() * 100 + "%";
-  heart.style.fontSize = (12 + Math.random() * 18) + "px";
-  heart.style.animationDuration = (8 + Math.random() * 8) + "s";
-  document.getElementById("hearts").appendChild(heart);
-  setTimeout(() => heart.remove(), 17000);
-}
-setInterval(createHeart, 1100);
-</script>
-</body>
-  </html>
-
+const order=['welcome','intro','menu','letter','memories','home','openwhen','promises','song','finale'];
+function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));const el=document.getElementById(id);if(el){el.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}}
+function next(id){let i=order.indexOf(id);go(order[Math.min(i+1,order.length-1)]);}
+function toggleNote(n){const el=document.getElementById('note'+n);const open=el.classList.contains('show');document.querySelectorAll('.reveal-note').forEach(x=>x.classList.remove('show'));if(!open)el.classList.add('show');}
+function revealFinal(){document.getElementById('finalPhoto').classList.add('show');document.getElementById('faith').hidden=false;}
+setInterval(()=>{if(document.hidden)return;const h=document.createElement('span');h.className='float-heart';h.textContent=['♡','♥','✧'][Math.floor(Math.random()*3)];h.style.left=Math.random()*100+'vw';h.style.fontSize=(12+Math.random()*18)+'px';h.style.animationDuration=(4+Math.random()*3)+'s';document.body.appendChild(h);setTimeout(()=>h.remove(),7500)},1300);
+</script></body></html>
