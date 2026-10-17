@@ -1,1 +1,420 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff3f6">
+<title>For My Somu ♡</title>
+<style>
+:root {
+  --pink: #d98aa9;
+  --deep: #824b64;
+  --cream: #fff9f1;
+  --paper: #fffdfb;
+  --muted: #987b88;
+  --line: #efdce4;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--deep);
+  background:
+    radial-gradient(ellipse at top left, #ffe2ec, transparent 48%),
+    linear-gradient(145deg, #fff8f1, #fff0f6 55%, #fffaf3);
+  font-family: Georgia, "Times New Roman", serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+button, a { -webkit-tap-highlight-color: transparent; }
+button {
+  font: inherit;
+  cursor: pointer;
+}
+button:focus-visible, a:focus-visible {
+  outline: 3px solid #ad6384;
+  outline-offset: 4px;
+}
+#hearts {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.float-heart {
+  position: absolute;
+  bottom: -35px;
+  color: #d98aa966;
+  animation: floatUp linear forwards;
+}
+@keyframes floatUp {
+  to { transform: translateY(-110vh) rotate(35deg); opacity: 0; }
+}
+.screen {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 28px, 760px);
+  margin: 0 auto;
+  padding: 38px 0 60px;
+  animation: fadeIn .65s ease both;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.center { text-align: center; }
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  font: 11px/1.8 Arial, sans-serif;
+  color: #ad6c87;
+}
+h1, h2, h3 { font-weight: normal; line-height: 1.2; }
+h1 { font-size: clamp(38px, 9vw, 66px); margin: 12px 0; }
+h2 { font-size: clamp(28px, 6vw, 42px); margin: 8px 0 14px; }
+h3 { font-size: 23px; margin: 10px 0; }
+p { line-height: 1.85; }
+.subtitle { color: var(--muted); font-style: italic; }
+button.primary, button.secondary, .music-link {
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 23px;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform .2s, box-shadow .2s;
+}
+button.primary {
+  color: white;
+  background: linear-gradient(120deg, #d98aa9, #ba7292);
+  box-shadow: 0 8px 22px #c77d9b35;
+}
+button.secondary, .music-link {
+  color: var(--deep);
+  background: #fffdfb;
+  border: 1px solid var(--line);
+}
+button.primary:hover, button.secondary:hover, .music-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 18px #a65e7d20;
+}
+.daisy-placeholder {
+  width: min(62vw, 255px);
+  aspect-ratio: 3 / 4;
+  border: 9px solid white;
+  border-bottom-width: 32px;
+  border-radius: 5px;
+  margin: 0 auto 24px;
+  background: linear-gradient(145deg, #f8d9e3, #fff2d8);
+  box-shadow: 0 14px 36px #9b587d25;
+  display: grid;
+  place-items: center;
+  font-size: 50px;
+}
+.panel {
+  background: #fffdfbdc;
+  border: 1px solid #efdce4;
+  border-radius: 23px;
+  padding: clamp(19px, 5vw, 34px);
+  box-shadow: 0 10px 32px #a65e7d0c;
+  margin: 20px 0;
+}
+.menu-grid, .card-grid, .memory-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+  margin: 24px 0;
+}
+.chapter-button {
+  text-align: left;
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  padding: 18px 14px;
+  color: var(--deep);
+  background: #fffdfbdc;
+  min-height: 94px;
+  line-height: 1.5;
+}
+.chapter-button span { display: block; font-size: 12px; color: var(--muted); margin-bottom: 5px; }
+.card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 19px 15px;
+  text-align: center;
+  min-width: 0;
+}
+.heart-card { background: #fff0f5; border-radius: 48% 48% 44% 44% / 35% 35% 55% 55%; }
+.memory-photo {
+  background: linear-gradient(145deg, #f7dce6, #fff2de);
+  border: 7px solid white;
+  border-bottom-width: 24px;
+  box-shadow: 0 5px 17px #78415e12;
+  aspect-ratio: 4 / 5;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 10px;
+  color: #9b7184;
+  font: 13px/1.5 Arial, sans-serif;
+  margin-bottom: 14px;
+}
+.memory-photo span { font-size: 30px; display: block; margin-bottom: 8px; }
+.memory-card { padding: 12px; background: #fffdfb; border-radius: 12px; }
+.memory-card p { font-size: 14px; }
+.envelope {
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  padding: 17px;
+  background: #fffdfb;
+  color: var(--deep);
+  margin: 8px 0;
+}
+.envelope-note { padding: 18px; background: #fff0f5; border-radius: 12px; margin: 10px 0 16px; animation: fadeIn .5s ease both; }
+.note-text { white-space: pre-line; line-height: 1.9; }
+.nav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 30px;
+}
+.nav-row button { flex: 1; }
+.small { font: 12px/1.7 Arial, sans-serif; color: var(--muted); }
+.final-photo {
+  width: min(75vw, 300px);
+  aspect-ratio: 3 / 4;
+  margin: 22px auto;
+  border: 10px solid white;
+  background: linear-gradient(145deg, #f8dce6, #fff0d9);
+  box-shadow: 0 12px 30px #a65e7d20;
+  display: grid;
+  place-items: center;
+  color: #9b7184;
+  text-align: center;
+  padding: 20px;
+}
+.final-message { animation: fadeIn .8s ease both; }
+footer { text-align: center; font-size: 12px; color: var(--muted); margin-top: 35px; }
+@media (max-width: 430px) {
+  .menu-grid, .card-grid, .memory-grid { gap: 9px; }
+  .chapter-button { padding: 14px 10px; font-size: 14px; }
+  .memory-card { padding: 9px; }
+  .nav-row button { padding: 12px 10px; font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+<div id="hearts" aria-hidden="true"></div>
+
+<main>
+  <section id="welcome" class="screen center">
+    <div class="eyebrow">♡ A little surprise for you ♡</div>
+    <div class="daisy-placeholder" aria-label="Photo placeholder">🌼<br>♡</div>
+    <h1>Hey, Somu…</h1>
+    <h2>Can I tell you something?</h2>
+    <p class="subtitle">A little corner of the world, made just for you.</p>
+    <button class="primary" onclick="showIntro()">Come here, my love 💌</button>
+  </section>
+
+  <section id="intro" class="screen center" hidden>
+    <div class="panel">
+      <div class="eyebrow">Just for you ♡</div>
+      <h2>A little something from me</h2>
+      <p>I hope this makes you smile just something i really wanted to do for you 🥺</p>
+      <button class="primary" onclick="showMenu()">Come see, my love 💗</button>
+    </div>
+  </section>
+
+  <section id="menu" class="screen center" hidden>
+    <div class="eyebrow">A little journey through us</div>
+    <h2>For My Somu 💗</h2>
+    <p class="subtitle">Take your time, my love. One little chapter at a time.</p>
+    <div class="menu-grid">
+      <button class="chapter-button" onclick="openChapter(1)"><span>CHAPTER 01</span>💌 A Letter for You</button>
+      <button class="chapter-button" onclick="openChapter(2)"><span>CHAPTER 02</span>📸 Our Lil Memories</button>
+      <button class="chapter-button" onclick="openChapter(3)"><span>CHAPTER 03</span>❤️ Why You're My Home</button>
+      <button class="chapter-button" onclick="openChapter(4)"><span>CHAPTER 04</span>✉️ Open When…</button>
+      <button class="chapter-button" onclick="openChapter(5)"><span>CHAPTER 05</span>🤍 Promises from My Heart</button>
+      <button class="chapter-button" onclick="openChapter(6)"><span>CHAPTER 06</span>🎧 Our Song</button>
+      <button class="chapter-button" onclick="openChapter(7)"><span>CHAPTER 07</span>🎁 One Last Thing</button>
+    </div>
+    <p class="small">Made with love, one little memory at a time ♡</p>
+  </section>
+
+  <section id="chapter" class="screen" hidden>
+    <div class="eyebrow center" id="chapter-number">CHAPTER 01</div>
+    <h2 class="center" id="chapter-title"></h2>
+    <div id="chapter-content"></div>
+    <div class="nav-row">
+      <button class="secondary" onclick="showMenu()">← Chapters</button>
+      <button id="next-button" class="primary" onclick="nextChapter()">Next chapter →</button>
+    </div>
+  </section>
+</main>
+
+<script>
+const ids = ["welcome", "intro", "menu", "chapter"];
+function showScreen(id) {
+  ids.forEach(name => document.getElementById(name).hidden = name !== id);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+function showIntro() { showScreen("intro"); }
+function showMenu() { showScreen("menu"); }
+let currentChapter = 1;
+
+const chapters = {
+1: {
+  title: "A Letter for You 💌",
+  html: `<div class="panel center">
+    <div class="eyebrow">A letter from Sammy</div>
+    <div class="memory-photo"><div><span>💌</span>Your personal letter will go here when you approve it.</div></div>
+    <p class="subtitle">Letter placeholder — your approved letter will be added later.</p>
+  </div>`
+},
+2: {
+  title: "Our Lil Memories 📸",
+  html: `<p class="center subtitle">Little moments that became treasures.</p>
+  <div class="memory-grid">
+    <article class="memory-card">
+      <div class="memory-photo"><div><span>📸</span>Photo placeholder</div></div>
+      <h3>Our Shopprixx rounds 🛍️</h3>
+      <p>Our little rounds together.</p>
+    </article>
+    <article class="memory-card">
+      <div class="memory-photo"><div><span>📸</span>Photo-booth placeholder</div></div>
+      <h3>Our Ramprastha walks 💗</h3>
+      <p>Those walks, you holding my arm, and moments I'll keep close forever.</p>
+    </article>
+    <article class="memory-card">
+      <div class="memory-photo"><div><span>📚</span>Photo placeholder</div></div>
+      <h3>Sector 4 bookshop</h3>
+      <p>Looking for your desired books.</p>
+    </article>
+    <article class="memory-card">
+      <div class="memory-photo"><div><span>☎️</span>Photo placeholder</div></div>
+      <h3>Our Diwali calls 🥹</h3>
+      <p>Having long phone calls during Diwali.</p>
+    </article>
+    <article class="memory-card">
+      <div class="memory-photo"><div><span>💛</span>Photo placeholder</div></div>
+      <h3>The golden bracelet</h3>
+      <p>Awwwww golden bracelet 🥹 it fits you perfectly see I'm holding and hanging to your wrist tight</p>
+    </article>
+  </div>`
+},
+3: {
+  title: "Why You're My Home ❤️",
+  html: `<p class="center subtitle">Little things I love about you.</p>
+  <div class="card-grid">
+    <article class="card heart-card"><div class="memory-photo"><div><span>♡</span>Photo placeholder</div></div><h3>Your magnetic eyes 👀</h3></article>
+    <article class="card heart-card"><div class="memory-photo"><div><span>♡</span>Photo placeholder</div></div><h3>Your smile 🌼</h3></article>
+    <article class="card heart-card"><h3>Your funny side 🩷</h3><p>I love your sense of humor</p></article>
+    <article class="card heart-card"><h3>Your presence of mind ✨</h3><p>You're my smart baby</p></article>
+    <article class="card heart-card"><h3>Your strength 🦁</h3><p>You're strong as a lioness, Smart as a Deer dealing with your and sometimes mine emotions aswell together</p></article>
+  </div>
+  <p class="center subtitle">Somehow, in a world full of places, you became my home. ♡</p>`
+},
+4: {
+  title: "Open When… ✉️",
+  html: `<p class="center subtitle">Choose the envelope you need today, my love.</p>
+  <button class="envelope" onclick="toggleNote('miss')">💌 Open when you miss me <span aria-hidden="true">＋</span></button>
+  <div id="note-miss" class="envelope-note" hidden><p class="note-text">Awwwww golden bracelet 🥹it fits you perfectly see I'm holding and hanging to your wrist tight</p></div>
+  <button class="envelope" onclick="toggleNote('sad')">🫂 Open when you're sad <span aria-hidden="true">＋</span></button>
+  <div id="note-sad" class="envelope-note" hidden><p class="note-text">Baby remember that diary sketch of mine God holding your hand? His arms are around your soul right now He's closer to you in times of grief 🥺</p></div>
+  <button class="envelope" onclick="toggleNote('lonely')">🤍 Open when you feel lonely <span aria-hidden="true">＋</span></button>
+  <div id="note-lonely" class="envelope-note" hidden><p class="note-text">Hey soma look at me I'm just a text away okay? 🥺 You can never be lonely all you need is just flood my dms I'm always here for you</p></div>`
+},
+5: {
+  title: "Promises from My Heart 🤍",
+  html: `<div class="panel">
+    <p class="subtitle center">Not promises of perfection, but promises of effort.</p>
+    <h3>♡ I promise to listen.</h3>
+    <p>I promise to listen. I'll always do my best hearing you completely…</p>
+    <h3>♡ I promise to ask, not assume.</h3>
+    <p>I'll try to understand your side before jumping to conclusions or defending myself.</p>
+    <h3>♡ I promise to understand what you need.</h3>
+    <p>I'll try to understand whether you need me to listen and comfort you or help you work through a practical problem.</p>
+    <h3>♡ I promise to keep trying.</h3>
+    <p>I'll try to follow through, own my mistakes, and keep working on the things that matter to us.</p>
+    <p class="center subtitle">I can't promise to get everything right, my love. But I can promise to keep learning how to love you better. ♡</p>
+  </div>`
+},
+6: {
+  title: "Our Song 🎧",
+  html: `<div class="panel center">
+    <div class="memory-photo"><div><span>🎶</span>Song artwork placeholder</div></div>
+    <h3>I Thought I Saw Your Face Today</h3>
+    <p class="subtitle">She &amp; Him</p>
+    <p>A little song for two hearts, even when they're miles apart.</p>
+    <p><a class="music-link" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=She+%26+Him+I+Thought+I+Saw+Your+Face+Today">▶ Find on YouTube</a></p>
+    <p><a class="music-link" target="_blank" rel="noopener noreferrer" href="https://open.spotify.com/search/I%20Thought%20I%20Saw%20Your%20Face%20Today%20She%20%26%20Him">♫ Find on Spotify</a></p>
+  </div>`
+},
+7: {
+  title: "One Last Thing… 🎁",
+  html: `<div class="panel center">
+    <p class="subtitle">A little surprise, just for you.</p>
+    <button id="reveal-button" class="primary" onclick="revealFinal()">One last thing… 💗</button>
+    <div id="final-reveal" hidden>
+      <div class="final-photo"><div>📸<br><br>Your final photo will go here after you approve it.</div></div>
+      <div id="faith-message" class="final-message">
+        <p class="note-text">We are blessed in the spirit of Our Loving God forever,What he brought together let no one separate 💗</p>
+      </div>
+    </div>
+  </div>`
+}
+};
+
+function openChapter(number) {
+  currentChapter = number;
+  const data = chapters[number];
+  document.getElementById("chapter-number").textContent =
+    "CHAPTER " + String(number).padStart(2, "0");
+  document.getElementById("chapter-title").textContent = data.title;
+  document.getElementById("chapter-content").innerHTML = data.html;
+  document.getElementById("next-button").textContent =
+    number === 7 ? "Back to chapters ♡" : "Next chapter →";
+  document.getElementById("next-button").onclick =
+    number === 7 ? showMenu : nextChapter;
+  showScreen("chapter");
+}
+function nextChapter() {
+  if (currentChapter < 7) openChapter(currentChapter + 1);
+  else showMenu();
+}
+function toggleNote(name) {
+  const note = document.getElementById("note-" + name);
+  note.hidden = !note.hidden;
+}
+function revealFinal() {
+  document.getElementById("final-reveal").hidden = false;
+  document.getElementById("reveal-button").hidden = true;
+}
+function createHeart() {
+  const heart = document.createElement("span");
+  heart.className = "float-heart";
+  heart.textContent = ["♡", "♥", "✧"][Math.floor(Math.random() * 3)];
+  heart.style.left = Math.random() * 100 + "%";
+  heart.style.fontSize = (12 + Math.random() * 18) + "px";
+  heart.style.animationDuration = (8 + Math.random() * 8) + "s";
+  document.getElementById("hearts").appendChild(heart);
+  setTimeout(() => heart.remove(), 17000);
+}
+setInterval(createHeart, 1100);
+</script>
+</body>
+  </html>
+
